@@ -12,20 +12,21 @@ export default function Books() {
     fetchData();
   }, []);
 
-  return(
+  return (
     <div>
       <h1>Books</h1>
       <ul>
-        { books.map((book, index) => (
+        {books.map((book, index) => (
           <li key={index}>
-            <div>{book.title}</div>
-            <div>{book.author}</div>
-            <div>{book.year_published}</div>
-            <div>{book.rating}</div>
-            <div>{book.description}</div>
+            <div className="title">{book.title}</div>
+            <div className="author">Author: {book.author}</div>
+            <div className="year_published">Published: {book.year_published}</div>
+            <div className="rating">Rating: {book.rating}</div>
+            <div className="description">{book.description}</div>
           </li>
         ))}
       </ul>
     </div>
   );
+  
 }

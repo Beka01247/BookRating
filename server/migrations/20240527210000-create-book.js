@@ -1,5 +1,5 @@
 'use strict';
-/** @type {import('sequelize-cli').Migration} */
+
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('books', {
@@ -28,9 +28,19 @@ module.exports = {
       rating: {
         type: Sequelize.DECIMAL,
         allowNull: false
+      },
+      userId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'users', // Name of the table
+          key: 'user_id',  // Name of the primary key field
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'SET NULL'
       }
     });
   },
+
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('books');
   }
